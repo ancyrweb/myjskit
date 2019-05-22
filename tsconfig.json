@@ -1,0 +1,27 @@
+{
+   "include": [
+     "src/**/*",
+     "__mocks__/FormData.ts"
+   ],
+   "exclude": [
+      "src/**/__tests__/*.ts",
+      "src/**/__mocks__/*.ts"
+   ],
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6",
+         "esnext.asynciterable"
+      ],
+      "target": "es2015",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "outDir": "./dist",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true,
+      "allowSyntheticDefaultImports": true,
+      "declaration": true
+   }
+}
