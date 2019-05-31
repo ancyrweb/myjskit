@@ -7,7 +7,7 @@ function defineGlobalProperty(name, value) {
   });
 }
 
-defineGlobalProperty('FormData', () => require('../__mocks__/FormData'));
+defineGlobalProperty('FormData', () => require('../src/__mocks__/FormData'));
 
 it('should check the object has key', () => {
   expect(objectToFormData({ foo: "bar"})).toEqual({
