@@ -5,6 +5,7 @@
  * @returns {string}
  */
 function objectToFormData<T = any>(object: { [key: string]: T }) {
+  // @ts-ignore
   const data = new FormData();
   Object.keys(object).forEach(key => {
     const value = object[key];

@@ -1,7 +1,6 @@
 {
    "include": [
-     "src/**/*",
-     "__mocks__/FormData.ts"
+     "src/**/*"
    ],
    "exclude": [
       "src/**/__tests__/*.ts",
@@ -17,7 +16,7 @@
       "module": "commonjs",
       "moduleResolution": "node",
       "resolveJsonModule": true,
-      "outDir": "./lib",
+      "outDir": "./lib/",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "sourceMap": true,
