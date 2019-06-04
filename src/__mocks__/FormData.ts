@@ -12,16 +12,18 @@
 type FormDataValue = any;
 type FormDataNameValuePair = [string, FormDataValue];
 
-type CustomHeaders = {[name: string]: string};
-type FormDataPart = {
-  string: string,
-  headers: CustomHeaders,
-} | {
-  uri: string,
-  headers: CustomHeaders,
-  name?: string,
-  type?: string,
-};
+type CustomHeaders = { [name: string]: string };
+type FormDataPart =
+  | {
+      string: string;
+      headers: CustomHeaders;
+    }
+  | {
+      uri: string;
+      headers: CustomHeaders;
+      name?: string;
+      type?: string;
+    };
 
 /**
  * Polyfill for XMLHttpRequest2 FormData API, allowing multipart POST requests
@@ -63,18 +65,20 @@ class FormData {
     return this._parts.map(([name, value]) => {
       const contentDisposition = 'form-data; name="' + name + '"';
 
-      const headers: CustomHeaders = { 'content-disposition': contentDisposition };
+      const headers: CustomHeaders = {
+        "content-disposition": contentDisposition
+      };
 
       // The body part is a "blob", which in React Native just means
       // an object with a `uri` attribute. Optionally, it can also
       // have a `name` and `type` attribute to specify filename and
       // content type (cf. web Blob interface.)
-      if (typeof value === 'object') {
-        if (typeof value.name === 'string') {
-          headers['content-disposition'] += '; filename="' + value.name + '"';
+      if (typeof value === "object") {
+        if (typeof value.name === "string") {
+          headers["content-disposition"] += '; filename="' + value.name + '"';
         }
-        if (typeof value.type === 'string') {
-          headers['content-type'] = value.type;
+        if (typeof value.type === "string") {
+          headers["content-type"] = value.type;
         }
         return { ...value, headers, fieldName: name };
       }
